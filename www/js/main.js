@@ -13,10 +13,10 @@ $(document).ready(function(){
     max = 5;
     min = 1;
     
-    $(document).on('click', '#startplay', function() {
+    $(document).on('touchstart', '#startplay', function() {
         snowFlakes();
         $('#startingdiv').css('display', 'none');
-        $(document).on('touch click', 'html', function() {
+        $(document).on('touchstart', 'html', function() {
             var xnumber = Math.floor(Math.random()*(max-min+1)+min);
             var ynumber = Math.floor(Math.random()*(max-min+1)+min);
 
@@ -62,10 +62,11 @@ $(document).ready(function(){
             $('#bar1').attr('dtp', ynumber);
         });
 
-        $('html').trigger('touch');
+        $('html').trigger('touchstart');
 
      });
-
+    
+    FastClick.attach(document.body);
 });
 
 function SplashBeGone() {
@@ -108,11 +109,11 @@ function jquerysnow() {
             
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
-                console.log('Your score: '+score);
+                //console.log('Your score: '+score);
                 //playAudio('../media/waterdroplet.mp3');
             }else{
                 score = 0;
-                console.log('Game Over!');
+                //console.log('Game Over!');
                 clearTimeout(fallingid);
             }
 
