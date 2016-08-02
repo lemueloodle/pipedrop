@@ -170,7 +170,9 @@ function jquerysnow() {
                 myMedia.play();
                 
             }else{
-                navigator.vibrate(1000);
+                var myMedia = new Media("/android_asset/www/media/gameover.mp3");
+                myMedia.play();
+
                 snowCount = 0;
                 score = 0;
                 clickcounter = 0;
