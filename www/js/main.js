@@ -168,8 +168,9 @@ function jquerysnow() {
                 console.log('Your score: '+score);
                 var myMedia = new Media("media/waterdroplet.mp3");
                 myMedia.play();
-                navigator.vibrate(300);
+                
             }else{
+                navigator.vibrate(1000);
                 snowCount = 0;
                 score = 0;
                 clickcounter = 0;
