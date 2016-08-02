@@ -101,7 +101,7 @@ function jquerysnow() {
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
         snow.delay(3000).transition({
-            y: "500"
+            top: (parseInt($(window).height())-parseInt(20))+"px"
         }, 2000, function(){
             $(this).remove();
             var countbar = $('#bar3').attr('dtx');
