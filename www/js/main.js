@@ -99,7 +99,7 @@ function jquerysnow() {
         var xnumber = Math.floor(Math.random()*(xmax-xmin+1)+xmin);
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
-        snow.delay(3000).animate({
+        snow.delay(3000).transition({
             top: "100%"
         }, 2000, function(){
             $(this).remove();
