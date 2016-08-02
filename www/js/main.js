@@ -155,7 +155,7 @@ function jquerysnow() {
         var xnumber = Math.floor(Math.random()*(xmax-xmin+1)+xmin);
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
-        snow.transition({
+        snow.delay(3000).transition({
             top: (parseInt($(window).height())-parseInt(20))+"px"
         }, 2000, function(){
             $(this).remove();
@@ -166,7 +166,7 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 console.log('Your score: '+score);
-                //playAudio('../media/waterdroplet.mp3');
+                playAudio('../media/waterdroplet.mp3');
             }else{
                 snowCount = 0;
                 score = 0;
@@ -175,6 +175,7 @@ function jquerysnow() {
                 $('#scoreboard').html(finalscore);
                 clearTimeout(fallingid);
 
+                $('#snowflakes').html('');
                
                 $('#gameover-modal').modal({ 
                     backdrop: 'static',
@@ -197,18 +198,14 @@ function snowFlakes(){
 }
 
 function playAudio(url) {
-    // Play the audio file at url
+  
     var my_media = new Media(url,
-        // success callback
-        function () {
-            console.log("playAudio():Audio Success");
-        },
-        // error callback
-        function (err) {
-            console.log("playAudio():Audio Error: " + err);
-        }
+            // success callback
+             function () { console.log("playAudio():Audio Success"); },
+            // error callback
+             function (err) { console.log("playAudio():Audio Error: " + err); }
     );
-    // Play audio
+           // Play audio
     my_media.play();
 }
 
