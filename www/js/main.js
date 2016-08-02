@@ -166,8 +166,9 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 console.log('Your score: '+score);
-                playAudio('../android_asset/www/media/waterdroplet.mp3');
-                navigator.vibrate(1000);
+                var myMedia = new Media("media/waterdroplet.mp3");
+                myMedia.play();
+                navigator.vibrate(300);
             }else{
                 snowCount = 0;
                 score = 0;
@@ -198,16 +199,6 @@ function snowFlakes(){
     
 }
 
-function playAudio(url) {
-  
-    var my_media = new Media(url,
-            // success callback
-             function () { console.log("playAudio():Audio Success"); },
-            // error callback
-             function (err) { console.log("playAudio():Audio Error: " + err); }
-    );
-           // Play audio
-    my_media.play();
-}
+
 
 
