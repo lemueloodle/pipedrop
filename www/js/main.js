@@ -13,6 +13,7 @@ $(document).ready(function(){
     max = 5;
     min = 1;
     
+    clickcounter = 0;
     $(document).on('touchstart', '#startplay', function() {
         snowFlakes();
         $('#loadingpage').css('display', 'none');
@@ -21,17 +22,27 @@ $(document).ready(function(){
             var xnumber = Math.floor(Math.random()*(max-min+1)+min);
             var ynumber = Math.floor(Math.random()*(max-min+1)+min);
 
-            $('.pipe1').css('display', 'block');
-            $('.top1').css('display', 'block');
-            $('.pipe2').css('display', 'block');
-            $('.top2').css('display', 'block');
-            $('.pipe3').css('display', 'block');
-            $('.top3').css('display', 'block');
-            $('.pipe4').css('display', 'block');
-            $('.top4').css('display', 'block');
-            $('.pipe5').css('display', 'block');
-            $('.top5').css('display', 'block');
-
+            clickcounter++;
+            if(clickcounter == 1){
+                $('.pipe1').css('display', 'block');
+                $('.top1').css('display', 'block');
+            }
+            else if(clickcounter == 2){
+                $('.pipe2').css('display', 'block');
+                $('.top2').css('display', 'block');
+            }
+            else if(clickcounter == 3){
+                $('.pipe3').css('display', 'block');
+                $('.top3').css('display', 'block');
+            }
+            else if(clickcounter == 4){
+                $('.pipe4').css('display', 'block');
+                $('.top4').css('display', 'block');
+            }
+            else if(clickcounter == 5){
+                $('.pipe5').css('display', 'block');
+                $('.top5').css('display', 'block');
+            }
             $('.pipe5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
             $('.top5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
             $('#bar5').css('height',height[($('#bar4').attr('dtp'))%height.length]);
@@ -67,6 +78,50 @@ $(document).ready(function(){
 
      });
     
+    $(document).on('click', '#tryagain-game', function(){
+        $('#gameover-modal').modal('hide');
+        snowCount = 0;
+        score = 0;
+        clickcounter = 0;
+        snowFlakes();
+
+        $('#bar1').attr('dtx', '');
+        $('#bar1').attr('dtp', '');
+        $('#bar2').attr('dtx', '');
+        $('#bar2').attr('dtp', '');
+        $('#bar3').attr('dtx', '');
+        $('#bar3').attr('dtp', '');
+        $('#bar4').attr('dtx', '');
+        $('#bar4').attr('dtp', '');
+        $('#bar5').attr('dtx', '');
+        $('#bar5').attr('dtp', '');
+
+        $('.pipe1').css('background-color','transparent');
+        $('.top1').css('background-color','transparent');
+        $('.pipe2').css('background-color','transparent');
+        $('.top2').css('background-color','transparent');
+        $('.pipe3').css('background-color','transparent');
+        $('.top3').css('background-color','transparent');
+        $('.pipe4').css('background-color','transparent');
+        $('.top4').css('background-color','transparent');
+        $('.pipe5').css('background-color','transparent');
+        $('.top5').css('background-color','transparent');
+
+        $('.pipe1').css('display','none');
+        $('.top1').css('display','none');
+        $('.pipe2').css('display','none');
+        $('.top2').css('display','none');
+        $('.pipe3').css('display','none');
+        $('.top3').css('display','none');
+        $('.pipe4').css('display','none');
+        $('.top4').css('display','none');
+        $('.pipe5').css('display','none');
+        $('.top5').css('display','none');
+       
+        $('#html').trigger('touchstart');
+
+    });
+
     FastClick.attach(document.body);
 });
 
@@ -100,7 +155,7 @@ function jquerysnow() {
         var xnumber = Math.floor(Math.random()*(xmax-xmin+1)+xmin);
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
-        snow.delay(3000).transition({
+        snow.transition({
             top: (parseInt($(window).height())-parseInt(20))+"px"
         }, 2000, function(){
             $(this).remove();
@@ -113,9 +168,20 @@ function jquerysnow() {
                 console.log('Your score: '+score);
                 //playAudio('../media/waterdroplet.mp3');
             }else{
+                snowCount = 0;
                 score = 0;
+                clickcounter = 0;
                 console.log('Game Over!');
+                $('#scoreboard').html(finalscore);
                 clearTimeout(fallingid);
+
+               
+                $('#gameover-modal').modal({ 
+                    backdrop: 'static',
+                    keyboard: false, 
+                    show: true});
+
+
             }
 
         });
