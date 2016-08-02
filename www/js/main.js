@@ -167,6 +167,7 @@ function jquerysnow() {
                 score = parseInt(score) + parseInt(1);
                 console.log('Your score: '+score);
                 playAudio('../android_asset/www/media/waterdroplet.mp3');
+                navigator.vibrate(1000);
             }else{
                 snowCount = 0;
                 score = 0;
