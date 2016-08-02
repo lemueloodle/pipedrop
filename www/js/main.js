@@ -166,7 +166,7 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 console.log('Your score: '+score);
-                playAudio('../media/waterdroplet.mp3');
+                playAudio('../android_asset/www/media/waterdroplet.mp3');
             }else{
                 snowCount = 0;
                 score = 0;
