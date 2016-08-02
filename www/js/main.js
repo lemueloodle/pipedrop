@@ -16,7 +16,7 @@ $(document).ready(function(){
     $(document).on('click', '#startplay', function() {
         snowFlakes();
         $('#startingdiv').css('display', 'none');
-        $(document).on('click', 'html', function() {
+        $(document).on('touch click', 'html', function() {
             var xnumber = Math.floor(Math.random()*(max-min+1)+min);
             var ynumber = Math.floor(Math.random()*(max-min+1)+min);
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
             $('#bar1').attr('dtp', ynumber);
         });
 
-        $('html').click();
+        $('html').trigger('touch');
 
      });
 
