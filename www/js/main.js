@@ -101,7 +101,7 @@ function jquerysnow() {
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
         snow.delay(3000).transition({
-            top: "100%"
+            y: "500"
         }, 2000, function(){
             $(this).remove();
             var countbar = $('#bar3').attr('dtx');
@@ -110,11 +110,11 @@ function jquerysnow() {
             
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
-                //console.log('Your score: '+score);
+                console.log('Your score: '+score);
                 //playAudio('../media/waterdroplet.mp3');
             }else{
                 score = 0;
-                //console.log('Game Over!');
+                console.log('Game Over!');
                 clearTimeout(fallingid);
             }
 
