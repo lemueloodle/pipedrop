@@ -33,7 +33,6 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/jumbotron.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <title>Pipe Drop</title>
@@ -127,12 +126,8 @@
             <div class="container-fluid">
             <div class="row-fluid">
                 <div class="centering text-center">
-                <div id="startingdiv" class="jumbotron vertical-center">
-                      <div class="container text-center">
                    <h1>Pipe Drop</h1><br><br>
                 Loading...
-                </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -144,13 +139,9 @@
             <div class="container-fluid">
             <div class="row-fluid">
                 <div class="centering text-center">
-                   <div id="startingdiv" class="jumbotron vertical-center">
-                      <div class="container text-center">
-                         <h1 class="initial_title">Pipe Drop</h1><br><br>
+                 
+                    <h1 class="initial_title">Pipe Drop</h1><br><br>
                     <button id="startplay" class="btn btn-primary">Play</button>
-                      </div>
-                      
-                    </div>
                 </div>
             </div>
         </div>
@@ -160,6 +151,9 @@
 
     <!-- Loading Page -->
     <div id="gamepage" style="display:none;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
+            <div class="container-fluid">
+            <div class="row-fluid">
         <div id="scorer" class="navbar-fixed-top pull-left" style="padding: 10px;">
         &nbsp;
         </div>
@@ -167,7 +161,7 @@
         </div>
         <div class="centering text-center" style="">
 
-            <div class="navbar-fixed-bottom" style="z-index:-1;">
+            <div class="navbar-fixed-bottom" style="">
             <div class="diving" id="bar1" dtx="" dtp="" style="display: inline-block; width:10%; margin-right:10%;" class="pull-left">
                 <div class="pipe1" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
@@ -205,7 +199,7 @@
             </div>
             </div>
         </div>
-           
+           </div></div></div>
     </div>
   
         <script type="text/javascript" src="cordova.js"></script>
