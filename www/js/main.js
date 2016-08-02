@@ -166,7 +166,7 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 console.log('Your score: '+score);
-                var myMedia = new Media("media/waterdroplet.mp3");
+                var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 myMedia.play();
                 
             }else{
