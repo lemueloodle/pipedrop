@@ -15,7 +15,8 @@ $(document).ready(function(){
     
     $(document).on('touchstart', '#startplay', function() {
         snowFlakes();
-        $('#startingdiv').css('display', 'none');
+        $('#loadingpage').css('display', 'none');
+        $('#gamepage').css('display', 'block');
         $(document).on('touchstart', 'html', function() {
             var xnumber = Math.floor(Math.random()*(max-min+1)+min);
             var ynumber = Math.floor(Math.random()*(max-min+1)+min);

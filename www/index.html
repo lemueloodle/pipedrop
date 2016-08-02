@@ -116,36 +116,56 @@
 
         </style>
     </head>
-    <body style="height:100%; background-color: #000000;">
+    <body style="height: 100%; background-color: #000000;">
    
     <!-- Welcome Page -->
-    <div id="splash" class="row" >
-    <div class="jumbotron vertical-center">
-      
-      <div class="container text-center">
-        <h1>Pipe Drop</h1>
-      </div>
-      
-    </div>
+   
+
+    <div id="splash" style="min-height:100%; position:relative;">
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
+            <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="centering text-center">
+                <div id="startingdiv" class="jumbotron vertical-center">
+                      <div class="container text-center">
+                   <h1>Pipe Drop</h1><br><br>
+                Loading...
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>​
     </div>
 
+     <div id="loadingpage" style="min-height:100%; position:relative; display:none;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
+            <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="centering text-center">
+                   <div id="startingdiv" class="jumbotron vertical-center">
+                      <div class="container text-center">
+                         <h1 class="initial_title">Pipe Drop</h1><br><br>
+                    <button id="startplay" class="btn btn-primary">Play</button>
+                      </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>​
+    </div>
+
+
     <!-- Loading Page -->
-    <div id="loadingpage" class="row" style="display:none;">
+    <div id="gamepage" style="display:none;">
         <div id="scorer" class="navbar-fixed-top pull-left" style="padding: 10px;">
         &nbsp;
         </div>
-        
         <div id="snowflakes">
         </div>
-        <div class="centering text-center" style="width: 100%;height:100%;">
-            <div id="startingdiv" class="jumbotron vertical-center">
-              <div class="container text-center">
-                 <h1 class="initial_title">Pipe Drop</h1><br><br>
-            <button id="startplay" class="btn btn-primary">Play</button>
-              </div>
-              
-            </div>
-           
+        <div class="centering text-center" style="">
+
             <div class="navbar-fixed-bottom" style="z-index:-1;">
             <div class="diving" id="bar1" dtx="" dtp="" style="display: inline-block; width:10%; margin-right:10%;" class="pull-left">
                 <div class="pipe1" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
