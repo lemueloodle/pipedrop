@@ -35,86 +35,8 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <title>Pipe Drop</title>
-
-        <style>
-        .diving{
-            -moz-transform:rotate(180deg);
-            -webkit-transform:rotate(180deg);
-            -o-transform:rotate(180deg);
-            -ms-transform:rotate(180deg);
-        }
-        .snow {
-            top:0px;
-            left:0px;
-            position:absolute;
-            z-index:200;
-            color:#fff;
-        }
-        #site {
-            width:500px;
-            height:500px;
-            margin:0 auto;
-            position:relative;
-            overflow:hidden;
-        }
-
-        body {
-          height: 100%;
-        }
-
-        .jumbotron.vertical-center {
-          margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
-        }
-
-        .vertical-center {
-          min-height: 100%;  /* Fallback for vh unit */
-          min-height: 100vh; /* You might also want to use
-                                'height' property instead.
-                                
-                                Note that for percentage values of
-                                'height' or 'min-height' properties,
-                                the 'height' of the parent element
-                                should be specified explicitly.
-          
-                                In this case the parent of '.vertical-center'
-                                is the <body> element */
-
-          /* Make it a flex container */
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
-          display: flex; 
-          
-          /* Align the bootstrap's container vertically */
-            -webkit-box-align : center;
-          -webkit-align-items : center;
-               -moz-box-align : center;
-               -ms-flex-align : center;
-                  align-items : center;
-          
-          /* In legacy web browsers such as Firefox 9
-             we need to specify the width of the flex container */
-          width: 100%;
-          
-          /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
-             hence the bootstrap's container won't be aligned to the center anymore.
-          
-             Therefore, we should use the following declarations to get it centered again */
-                 -webkit-box-pack : center;
-                    -moz-box-pack : center;
-                    -ms-flex-pack : center;
-          -webkit-justify-content : center;
-                  justify-content : center;
-        }
-
-        #fall{
-           
-
-        }
-
-        </style>
+        <link href="css/main.css" rel="stylesheet" type="text/css">
+        <title>Beat My Drops</title>
     </head>
     <body style="height: 100%; background-color: #000000;">
    
@@ -122,11 +44,11 @@
    
 
     <div id="splash" style="min-height:100%; position:relative;">
-        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; color: #ffffff;">
             <div class="container-fluid">
             <div class="row-fluid">
-                <div class="centering text-center">
-                   <h1>Pipe Drop</h1><br><br>
+                <div class="centering text-center" style="font-family: Chi-TownNF;">
+                   <p style="font-size: 3em;">Beat My Drops</p><br><br>
                 Loading...
                 </div>
             </div>
@@ -135,13 +57,23 @@
     </div>
 
      <div id="loadingpage" style="min-height:100%; position:relative; display:none;">
-      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; color: #ffffff;">
             <div class="container-fluid">
             <div class="row-fluid">
-                <div class="centering text-center">
-                 
-                    <h1 class="initial_title">Pipe Drop</h1><br><br>
-                    <button id="startplay" class="btn btn-primary">Play</button>
+                <div class="navbar-fixed-top" style="padding: 10px;">
+                    <button id="connectonline" style="color: #1580db; background-color:transparent; border-color: #1580db;" class="round round-lg hollow pull-left"><i class="fa fa-bolt fa-1x"></i></button>
+                    <button id="highestscore" style="color: #dbc111; background-color:transparent; border-color: #dbc111;" class="round round-lg hollow pull-right"><i class="fa fa-trophy fa-1x"></i></button>
+                </div>
+                <div class="navbar-fixed-bottom pull-left" style="padding: 10px;  font-size: 1.2em;">
+                    Your Highest Drop: <span id="yourhdrop">100</span>
+                </div>
+                <div class="navbar-fixed-bottom" style="padding: 10px; ">
+                    <button id="aboutus" style="color: #84d345; background-color:transparent; border-color: #84d345;" class="round round-lg hollow pull-right"><i class="fa fa-question fa-1x"></i></button>
+                </div>
+                <div class="centering text-center" style="font-family: Chi-TownNF;">
+                    <img src="img/beatmydrops.jpg" style="width: 200px; display: inline-block">
+                     <p style="font-size: 3em; animation: color 10s infinite; -webkit-animation: color 10s infinite">Beat My Drops</p><br><br>
+                    <button id="startplay" class="btn btn-danger" style="color: #000000; font-size: 1.5em;">Start Play'n</button>
                 </div>
             </div>
         </div>
@@ -151,10 +83,10 @@
 
     <!-- Loading Page -->
     <div id="gamepage" style="display:none;">
-    <div id="gamediv" style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;">
-            <div class="container-fluid">
-            <div class="row-fluid">
-        <div id="scorer" class="navbar-fixed-top pull-left" style="padding: 10px;">
+    <div id="gamediv" style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000;  ">
+        <div class="container-fluid">
+        <div class="row-fluid">
+        <div id="scorer" class="navbar-fixed-top pull-left" style="padding: 15px; font-size: 2em; font-family: Chi-TownNF; color: #ffffff;">
         &nbsp;
         </div>
         <div id="snowflakes">
@@ -163,37 +95,37 @@
 
             <div class="navbar-fixed-bottom" style="">
             <div class="diving" id="bar1" dtx="" dtp="" style="display: inline-block; width:10%; margin-right:10%;" class="pull-left">
-                <div class="pipe1" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
+                <div class="pipe1" style="display: none; float: left; width: 80%; height:100%; border:solid 1px #000000; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
-                <div class="top1" style="display: none; float: left; width: 100%; height:20px; border:solid 1px;">
+                <div class="top1" style="display: none; float: left; width: 100%; height:20px; border:solid 1px #000000;">
                 &nbsp;
                 </div>
             </div>
             <div class="diving" id="bar2" dtx="" dtp="" style="display: inline-block; width:10%;margin-right:10%;" class="pull-left">
-                <div class="pipe2" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
+                <div class="pipe2" style="display: none; float: left; width: 80%; height:100%; border:solid 1px #000000; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
-                <div class="top2" style="display: none; float: left; width: 100%; height:20px; border:solid 1px;">
+                <div class="top2" style="display: none; float: left; width: 100%; height:20px; border:solid 1px #000000;">
                 &nbsp;
                 </div>
             </div>
             <div class="diving" id="bar3" dtx="" dtp="" style="display: inline-block; width:10%;margin-right:10%;" class="pull-left">
-                <div class="pipe3" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
+                <div class="pipe3" style="display: none; float: left; width: 80%; height:100%; border:solid 1px #000000; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
-                <div class="top3" style="display: none; float: left; width: 100%; height:20px; border:solid 1px;">
+                <div class="top3" style="display: none; float: left; width: 100%; height:20px; border:solid 1px #000000;">
                 &nbsp;
                 </div>
             </div>
             <div class="diving" id="bar4" dtx="" dtp="" style="display: inline-block; width:10%;margin-right:10%;" class="pull-left">
-                <div class="pipe4" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
+                <div class="pipe4" style="display: none; float: left; width: 80%; height:100%; border:solid 1px #000000; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
-                <div class="top4" style="display: none; float: left; width: 100%; height:20px; border:solid 1px;">
+                <div class="top4" style="display: none; float: left; width: 100%; height:20px; border:solid 1px #000000;">
                 &nbsp;
                 </div>
             </div>
             <div class="diving" id="bar5" dtx="" dtp="" style="display: inline-block; width:10%;" class="pull-left">
-                <div class="pipe5" style="display: none; float: left; width: 80%; height:100%; border:solid 1px; margin-left: 10%; margin-right: 10%;">
+                <div class="pipe5" style="display: none; float: left; width: 80%; height:100%; border:solid 1px #000000; margin-left: 10%; margin-right: 10%;">
                 &nbsp;</div>
-                <div class="top5" style="display: none; float: left; width: 100%; height:20px; border:solid 1px;">
+                <div class="top5" style="display: none; float: left; width: 100%; height:20px; border:solid 1px #000000;">
                 &nbsp;
                 </div>
             </div>
@@ -218,17 +150,16 @@
         <script type="text/javascript" src="js/main.js"></script>
         
     </body>
-    <div class="modal fade" id="gameover-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; margin-top: 10% ">
-  <div class="modal-dialog" style="">
+    <div class="modal fade" id="gameover-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; ">
+  <div class="modal-dialog" style="display: inline-block; text-align: left; vertical-align: middle;">
 
     <div class="modal-content" style="-webkit-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
 -moz-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
 box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
-      <div class="modal-body text-center">
-      <h1>Game Over!</h1>
-      <br><br>
-      <h2>Score: <span id="scoreboard"></span></h2>
-     <button type="button" class="btn btn-primary" id="tryagain-game" >Try Again</button>
+      <div class="modal-body col-sm-12 text-center">
+      <p style="font-size: 2em; font-family: Chi-TownNF; animation: color 10s infinite; -webkit-animation: color 10s infinite">Game Over</p>
+      <h3>Score</h3><span id="scoreboard" style="font-size: 2em;"></span><br><br>
+     <button type="button" class="btn btn-danger" style="font-family: Chi-TownNF; color: #000000; font-size: 1.5em;" id="tryagain-game">Try Again</button>
       </div>
       <div class="modal-footer" style="display:none;">
 
@@ -237,5 +168,82 @@ box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
     </div>
   </div>
 </div>
+
+<div class="modal fade abouting" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; ">
+  <div class="modal-dialog" style="display: inline-block; text-align: left; vertical-align: middle; word-wrap: break-word;">
+
+    <div class="modal-content" style="-webkit-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+-moz-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
+      <div class="modal-body col-sm-12 text-center" style=" word-wrap: break-word;">
+        <p style="font-size: 2em; font-family: Chi-TownNF; animation: color 10s infinite; -webkit-animation: color 10s infinite">Beat My Drops</p>
+        <hr>
+        Drops are falling high af! so make sure it falls on the same color of pipe.<br><br>
+        Collect all drops, beat 'em all!<br><br>
+        <p style="color: #d32b2b;">Warning:</p> This game can cause phone coma!<br><br>
+        <i>*Hint: Listen to the drops nig**!</i>
+        <hr>
+        Brought to you by <a href="https://6geeks.xyz">6Geeks Studios</a>
+        <hr>
+        <button type="button" class="btn btn-warning pull-right" style="color: #000000; font-size: 1.5em;" data-dismiss="modal">Close</button>
+        <br><br>
+
+      </div>
+      <div class="modal-footer" style="display:none;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade abouting" id="highestscore-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; ">
+  <div class="modal-dialog" style="display: inline-block; text-align: left; vertical-align: middle; word-wrap: break-word;">
+
+    <div class="modal-content" style="-webkit-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+-moz-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
+      <div class="modal-body col-sm-12 text-center" style=" word-wrap: break-word;">
+        <p style="font-size: 2em; font-family: Chi-TownNF; animation: color 10s infinite; -webkit-animation: color 10s infinite">High Drops</p>
+        <hr>
+        <div id="hightable">
+        <table class="table table-striped"> 
+        <thead> 
+        <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Drops</th>
+        </tr> 
+        </thead> 
+        <tbody>
+        <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>20</td>
+        </tr>
+        <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>30</td>
+        </tr>
+        <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>40</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-warning pull-right" style="color: #000000; font-size: 1.5em;" data-dismiss="modal">Close</button>
+        <br><br>
+
+      </div>
+      <div class="modal-footer" style="display:none;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 </html>

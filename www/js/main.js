@@ -2,13 +2,36 @@ $(document).ready(function(){
 
     window.addEventListener('load', init);
     
+    $(document).on('click', '#highestscore', function(){
+        $('#highestscore-modal').modal('show');
+
+        if(navigator.connection.type == Connection.NONE){
+            $('#hightable').html('Offline');
+        }
+        else{
+            //$('#hightable').html('Online');
+        }
+    });
+
+    $(document).on('click', '#aboutus', function(){
+        $('#about-modal').modal('show');
+    });
+
+    //Display Highest Score
+    var displaystorage = window.localStorage;
+    var displayhighestscore = displaystorage.getItem("MyHighestDrop");
+    if(displayhighestscore == null || displayhighestscore == "")
+        $('#yourhdrop').html('0');
+    else
+        $('#yourhdrop').html(displayhighestscore);
+
     $(document).on("mobileinit", function() {
         $.mobile.allowCrossDomainPages = true;
         $.support.cors = true;
     });
 
-    barcolors = ['#b30000', '#c98a27', '#66c944', '#43ce95', '#3fc2ce', '#8865ce', 'b03d96', 'b03a40'];
-    height = ['70px', '50px', '150px', '100px', '30px'];
+    barcolors = ['#b32e2e', '#c9a128', '#58c93e', '#ce1f71', '#3fc2ce'];
+    height = ['50px', '40px', '65px', '90px', '30px'];
 
     max = 5;
     min = 1;
@@ -151,7 +174,7 @@ function jquerysnow() {
         snow.html('<div id="fall" style="position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);"><i id="falldrop" class="fa fa-tint fa-3x"></i></div>');
 
         //Falling Pattern
-        fallcolors = ['#b30000', '#c98a27', '#66c944', '#43ce95', '#3fc2ce', '#8865ce', 'b03d96', 'b03a40'];
+        fallcolors = ['#b32e2e', '#c9a128', '#58c93e', '#ce1f71', '#3fc2ce'];
         var xnumber = Math.floor(Math.random()*(xmax-xmin+1)+xmin);
         $('#falldrop').css('color',fallcolors[(xnumber)%fallcolors.length]);
 
@@ -168,6 +191,11 @@ function jquerysnow() {
                 console.log('Your score: '+score);
                 var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 myMedia.play();
+
+                //Put Sound Alright! or Oyeah!
+                //Next Level Activate Background Color Random Loop;
+                //Player ID
+                //String playerId = Games.Players.getCurrentPlayerId(getApiClient());
                 
             }else{
                 var myMedia = new Media("/android_asset/www/media/gameover.mp3");
@@ -177,6 +205,21 @@ function jquerysnow() {
                 score = 0;
                 clickcounter = 0;
                 console.log('Game Over!');
+
+                $('#scorer').html('');
+                //Save Highest Score
+                var storage = window.localStorage;
+                var highestscore = storage.getItem("MyHighestDrop");
+                if(highestscore == null || highestscore == ""){
+                    storage.setItem("MyHighestDrop", finalscore);
+                    $('#yourhdrop').html(finalscore);
+                }
+                else if(highestscore < finalscore){
+                    storage.setItem("MyHighestDrop", finalscore);
+                    $('#yourhdrop').html(finalscore);
+                }
+
+
                 $('#scoreboard').html(finalscore);
                 clearTimeout(fallingid);
 
@@ -198,10 +241,26 @@ function snowFlakes(){
         snowCount = snowCount +1;
         jquerysnow();
         snowFlakes();
+
+        if(score == 30){
+            $('#gamediv').css('animation', 'bg-color 10s infinite');
+            $('#gamediv').css('-webkit-animation', 'bg-color 10s infinite');
+        }
+        else if(score == 50){
+            $('#gamediv').css('animation', 'bg-color 5s infinite');
+            $('#gamediv').css('-webkit-animation', 'bg-color 5s infinite');
+        }
+        else if(score == 80){
+            $('#gamediv').css('animation', 'bg-color 3s infinite');
+            $('#gamediv').css('-webkit-animation', 'bg-color 3s infinite');
+        }
+        else if(score == 100){
+            $('#gamediv').css('animation', 'bg-color .5s infinite');
+            $('#gamediv').css('-webkit-animation', 'bg-color .5s infinite');
+        }
     },3000);
     
 }
-
 
 
 

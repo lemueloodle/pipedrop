@@ -123,3 +123,17 @@ html, body{height:100%; margin:0;padding:0}
   float:none;
   margin:0 auto;
 }
+
+@font-face {
+    font-family: 'CHI-TOWN';
+    src: url(../fonts/CHI-TOWN.TTF);
+    src: local('CHI-TOWN'), local('CHI-TOWN.TTF'),
+    url(../fonts/CHI-TOWN.TTF) format('truetype');
+}
+
+@font-face {
+    font-family: 'Chi-TownNF';
+    src: url(../fonts/Chi-TownNF.ttf);
+    src: local('Chi-TownNF'), local('Chi-TownNF.ttf'),
+    url(../fonts/Chi-TownNF.ttf) format('truetype');
+}
