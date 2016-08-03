@@ -286,6 +286,7 @@ function jquerysnow() {
                 
                 var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 myMedia.play();
+                myMedia.release();
 
                 //Put Sound Alright! or Oyeah!
                 //Next Level Activate Background Color Random Loop;
@@ -295,6 +296,7 @@ function jquerysnow() {
             }else{
                var myMedia = new Media("/android_asset/www/media/gameover.mp3");
                 myMedia.play();
+                myMedia.release();
                 flag = true;
                 snowCount = 0;
                 score = 0;
