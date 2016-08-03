@@ -33,79 +33,129 @@ $(document).ready(function(){
     barcolors = ['#b32e2e', '#c9a128', '#58c93e', '#ce1f71', '#3fc2ce'];
     height = ['50px', '40px', '65px', '90px', '30px'];
 
-    max = 5;
-    min = 1;
     
-    clickcounter = 0;
+    clickcounter = 1;
+    var max = 5;
+    var min = 1;
+    $('#gamediv').bind('touchstart', function() {
+        if (!flag) {
+
+        var xnumber = Math.floor(Math.random()*(max-min+1)+min);
+        var ynumber = Math.floor(Math.random()*(max-min+1)+min);
+
+        
+        if(clickcounter == 1){
+            $('.pipe1').css('display', 'block');
+            $('.top1').css('display', 'block');
+        }
+        else if(clickcounter == 2){
+            $('.pipe2').css('display', 'block');
+            $('.top2').css('display', 'block');
+        }
+        else if(clickcounter == 3){
+            $('.pipe3').css('display', 'block');
+            $('.top3').css('display', 'block');
+        }
+        else if(clickcounter == 4){
+            $('.pipe4').css('display', 'block');
+            $('.top4').css('display', 'block');
+        }
+        else if(clickcounter == 5){
+            $('.pipe5').css('display', 'block');
+            $('.top5').css('display', 'block');
+        }
+
+        clickcounter =  parseInt(clickcounter) + 1;
+        $('.pipe5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
+        $('.top5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
+        $('#bar5').css('height',height[($('#bar4').attr('dtp'))%height.length]);
+        $('#bar5').attr('dtx', $('#bar4').attr('dtx'));
+        $('#bar5').attr('dtp', $('#bar4').attr('dtp'));
+
+        $('.pipe4').css('background-color',barcolors[($('#bar3').attr('dtx'))%barcolors.length]);
+        $('.top4').css('background-color',barcolors[($('#bar3').attr('dtx'))%barcolors.length]);
+        $('#bar4').css('height',height[($('#bar3').attr('dtp'))%height.length]);
+        $('#bar4').attr('dtx', $('#bar3').attr('dtx'));
+        $('#bar4').attr('dtp', $('#bar3').attr('dtp'));
+
+        $('.pipe3').css('background-color',barcolors[($('#bar2').attr('dtx'))%barcolors.length]);
+        $('.top3').css('background-color',barcolors[($('#bar2').attr('dtx'))%barcolors.length]);
+        $('#bar3').css('height',height[($('#bar2').attr('dtp'))%height.length]);
+        $('#bar3').attr('dtx', $('#bar2').attr('dtx'));
+        $('#bar3').attr('dtp', $('#bar2').attr('dtp'));
+
+        $('.pipe2').css('background-color',barcolors[($('#bar1').attr('dtx'))%barcolors.length]);
+        $('.top2').css('background-color',barcolors[($('#bar1').attr('dtx'))%barcolors.length]);
+        $('#bar2').css('height',height[($('#bar1').attr('dtp'))%height.length]);
+        $('#bar2').attr('dtx', $('#bar1').attr('dtx'));
+        $('#bar2').attr('dtp', $('#bar1').attr('dtp'));
+
+        $('.pipe1').css('background-color',barcolors[(xnumber)%barcolors.length]);
+        $('.top1').css('background-color',barcolors[(xnumber)%barcolors.length]);
+        $('#bar1').css('height',height[(ynumber)%height.length]);
+        $('#bar1').attr('dtx', xnumber);
+        $('#bar1').attr('dtp', ynumber);
+        }
+        else{
+            return false;
+        }
+    });
     $(document).on('touchstart', '#startplay', function() {
+        flag = false;
         snowFlakes();
+         
         $('#loadingpage').css('display', 'none');
         $('#gamepage').css('display', 'block');
-        $(document).on('touchstart', 'html', function() {
-            var xnumber = Math.floor(Math.random()*(max-min+1)+min);
-            var ynumber = Math.floor(Math.random()*(max-min+1)+min);
+        
+        snowCount = 0;
+        score = 0;
+        clickcounter = 1;
 
-            clickcounter++;
-            if(clickcounter == 1){
-                $('.pipe1').css('display', 'block');
-                $('.top1').css('display', 'block');
-            }
-            else if(clickcounter == 2){
-                $('.pipe2').css('display', 'block');
-                $('.top2').css('display', 'block');
-            }
-            else if(clickcounter == 3){
-                $('.pipe3').css('display', 'block');
-                $('.top3').css('display', 'block');
-            }
-            else if(clickcounter == 4){
-                $('.pipe4').css('display', 'block');
-                $('.top4').css('display', 'block');
-            }
-            else if(clickcounter == 5){
-                $('.pipe5').css('display', 'block');
-                $('.top5').css('display', 'block');
-            }
-            $('.pipe5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
-            $('.top5').css('background-color',barcolors[($('#bar4').attr('dtx'))%barcolors.length]);
-            $('#bar5').css('height',height[($('#bar4').attr('dtp'))%height.length]);
-            $('#bar5').attr('dtx', $('#bar4').attr('dtx'));
-            $('#bar5').attr('dtp', $('#bar4').attr('dtp'));
+        $('#bar1').attr('dtx', '');
+        $('#bar1').attr('dtp', '');
+        $('#bar2').attr('dtx', '');
+        $('#bar2').attr('dtp', '');
+        $('#bar3').attr('dtx', '');
+        $('#bar3').attr('dtp', '');
+        $('#bar4').attr('dtx', '');
+        $('#bar4').attr('dtp', '');
+        $('#bar5').attr('dtx', '');
+        $('#bar5').attr('dtp', '');
 
-            $('.pipe4').css('background-color',barcolors[($('#bar3').attr('dtx'))%barcolors.length]);
-            $('.top4').css('background-color',barcolors[($('#bar3').attr('dtx'))%barcolors.length]);
-            $('#bar4').css('height',height[($('#bar3').attr('dtp'))%height.length]);
-            $('#bar4').attr('dtx', $('#bar3').attr('dtx'));
-            $('#bar4').attr('dtp', $('#bar3').attr('dtp'));
+        $('.pipe1').css('background-color','transparent');
+        $('.top1').css('background-color','transparent');
+        $('.pipe2').css('background-color','transparent');
+        $('.top2').css('background-color','transparent');
+        $('.pipe3').css('background-color','transparent');
+        $('.top3').css('background-color','transparent');
+        $('.pipe4').css('background-color','transparent');
+        $('.top4').css('background-color','transparent');
+        $('.pipe5').css('background-color','transparent');
+        $('.top5').css('background-color','transparent');
 
-            $('.pipe3').css('background-color',barcolors[($('#bar2').attr('dtx'))%barcolors.length]);
-            $('.top3').css('background-color',barcolors[($('#bar2').attr('dtx'))%barcolors.length]);
-            $('#bar3').css('height',height[($('#bar2').attr('dtp'))%height.length]);
-            $('#bar3').attr('dtx', $('#bar2').attr('dtx'));
-            $('#bar3').attr('dtp', $('#bar2').attr('dtp'));
+        $('.pipe1').css('display','none');
+        $('.top1').css('display','none');
+        $('.pipe2').css('display','none');
+        $('.top2').css('display','none');
+        $('.pipe3').css('display','none');
+        $('.top3').css('display','none');
+        $('.pipe4').css('display','none');
+        $('.top4').css('display','none');
+        $('.pipe5').css('display','none');
+        $('.top5').css('display','none');
+       
+        $('#gamediv').trigger('touchstart');
 
-            $('.pipe2').css('background-color',barcolors[($('#bar1').attr('dtx'))%barcolors.length]);
-            $('.top2').css('background-color',barcolors[($('#bar1').attr('dtx'))%barcolors.length]);
-            $('#bar2').css('height',height[($('#bar1').attr('dtp'))%height.length]);
-            $('#bar2').attr('dtx', $('#bar1').attr('dtx'));
-            $('#bar2').attr('dtp', $('#bar1').attr('dtp'));
-
-            $('.pipe1').css('background-color',barcolors[(xnumber)%barcolors.length]);
-            $('.top1').css('background-color',barcolors[(xnumber)%barcolors.length]);
-            $('#bar1').css('height',height[(ynumber)%height.length]);
-            $('#bar1').attr('dtx', xnumber);
-            $('#bar1').attr('dtp', ynumber);
-        });
-
-        $('html').trigger('touchstart');
+        
 
      });
     
     $(document).on('click', '#tryagain-game', function(){
+        flag = false;
         $('#gameover-modal').modal('hide');
         snowCount = 0;
         score = 0;
-        clickcounter = 0;
+        clickcounter = 1;
         snowFlakes();
 
         $('#bar1').attr('dtx', '');
@@ -141,8 +191,53 @@ $(document).ready(function(){
         $('.pipe5').css('display','none');
         $('.top5').css('display','none');
        
-        $('#html').trigger('touchstart');
+        $('#gamediv').trigger('touchstart');
 
+    });
+
+    $(document).on('click', '#goback-home', function(){
+       
+        $('#gameover-modal').modal('hide');
+        
+        snowCount = 0;
+        score = 0;
+        clickcounter = 1;
+       
+        $('#loadingpage').css('display', 'block');
+        $('#gamepage').css('display', 'none');
+
+        $('#bar1').attr('dtx', "");
+        $('#bar1').attr('dtp', "");
+        $('#bar2').attr('dtx', "");
+        $('#bar2').attr('dtp', "");
+        $('#bar3').attr('dtx', "");
+        $('#bar3').attr('dtp', "");
+        $('#bar4').attr('dtx', "");
+        $('#bar4').attr('dtp', "");
+        $('#bar5').attr('dtx', "");
+        $('#bar5').attr('dtp', "");
+
+        $('.pipe1').css('background-color','transparent');
+        $('.top1').css('background-color','transparent');
+        $('.pipe2').css('background-color','transparent');
+        $('.top2').css('background-color','transparent');
+        $('.pipe3').css('background-color','transparent');
+        $('.top3').css('background-color','transparent');
+        $('.pipe4').css('background-color','transparent');
+        $('.top4').css('background-color','transparent');
+        $('.pipe5').css('background-color','transparent');
+        $('.top5').css('background-color','transparent');
+
+        $('.pipe1').css('display','none');
+        $('.top1').css('display','none');
+        $('.pipe2').css('display','none');
+        $('.top2').css('display','none');
+        $('.pipe3').css('display','none');
+        $('.top3').css('display','none');
+        $('.pipe4').css('display','none');
+        $('.top4').css('display','none');
+        $('.pipe5').css('display','none');
+        $('.top5').css('display','none');
     });
 
     FastClick.attach(document.body);
@@ -166,8 +261,8 @@ function jquerysnow() {
         var finalscore = score;
         $('#scorer').html(finalscore);
         var snow = $('<div class="snow"></div>');
-        xmax = 5;
-        xmin = 1;
+        var xmax = 5;
+        var xmin = 1;
         $('#snowflakes').prepend(snow);
         
         snow.css({'left':'50%'});
@@ -188,7 +283,7 @@ function jquerysnow() {
             
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
-                console.log('Your score: '+score);
+                
                 var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 myMedia.play();
 
@@ -198,13 +293,13 @@ function jquerysnow() {
                 //String playerId = Games.Players.getCurrentPlayerId(getApiClient());
                 
             }else{
-                var myMedia = new Media("/android_asset/www/media/gameover.mp3");
+               var myMedia = new Media("/android_asset/www/media/gameover.mp3");
                 myMedia.play();
-
+                flag = true;
                 snowCount = 0;
                 score = 0;
-                clickcounter = 0;
-                console.log('Game Over!');
+                clickcounter = 1;
+                
 
                 $('#scorer').html('');
                 //Save Highest Score
@@ -219,7 +314,6 @@ function jquerysnow() {
                     $('#yourhdrop').html(finalscore);
                 }
 
-
                 $('#scoreboard').html(finalscore);
                 clearTimeout(fallingid);
 
@@ -228,8 +322,41 @@ function jquerysnow() {
                 $('#gameover-modal').modal({ 
                     backdrop: 'static',
                     keyboard: false, 
-                    show: true});
+                    show: true
+                });
 
+                $('#bar1').attr('dtx', '');
+                $('#bar1').attr('dtp', '');
+                $('#bar2').attr('dtx', '');
+                $('#bar2').attr('dtp', '');
+                $('#bar3').attr('dtx', '');
+                $('#bar3').attr('dtp', '');
+                $('#bar4').attr('dtx', '');
+                $('#bar4').attr('dtp', '');
+                $('#bar5').attr('dtx', '');
+                $('#bar5').attr('dtp', '');
+
+                $('.pipe1').css('background-color','transparent');
+                $('.top1').css('background-color','transparent');
+                $('.pipe2').css('background-color','transparent');
+                $('.top2').css('background-color','transparent');
+                $('.pipe3').css('background-color','transparent');
+                $('.top3').css('background-color','transparent');
+                $('.pipe4').css('background-color','transparent');
+                $('.top4').css('background-color','transparent');
+                $('.pipe5').css('background-color','transparent');
+                $('.top5').css('background-color','transparent');
+
+                $('.pipe1').css('display','none');
+                $('.top1').css('display','none');
+                $('.pipe2').css('display','none');
+                $('.top2').css('display','none');
+                $('.pipe3').css('display','none');
+                $('.top3').css('display','none');
+                $('.pipe4').css('display','none');
+                $('.top4').css('display','none');
+                $('.pipe5').css('display','none');
+                $('.top5').css('display','none');
 
             }
 
