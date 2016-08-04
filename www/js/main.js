@@ -289,8 +289,7 @@ var dropsound;
 var playsound = {
 
     play: function(mp3) {
-            
-        mp3 = "data/mp3/" + mp3;
+        
         if(device.platform.toLowerCase() === "android") mp3 = "/android_asset/www/" + mp3;
 
         if(window.Media) {
@@ -344,12 +343,7 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 
-                
-
-                if(dropsound) 
-                    dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/waterdroplet.mp3");
-                dropsound.play();
+                playsound.play('media/waterdroplet.mp3');
 
                 //var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 //myMedia.play();
@@ -364,10 +358,8 @@ function jquerysnow() {
                 //var myMedia = new Media("/android_asset/www/media/gameover.mp3");
                 //if(myMedia) media.stop();
                 //myMedia.play();
-                if(dropsound) 
-                    dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/gameover.mp3");
-                dropsound.play();
+                
+                playsound.play('media/gameover.mp3');
 
                 flag = true;
                 snowCount = 0;
