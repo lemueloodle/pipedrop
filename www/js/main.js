@@ -280,9 +280,29 @@ $(document).ready(function(){
 
         $(document).FaceGap(config);
     });
+
+    
     
 });
 
+var dropsound;
+var playsound = {
+
+    play: function(mp3) {
+            
+        mp3 = "data/mp3/" + mp3;
+        if(device.platform.toLowerCase() === "android") mp3 = "/android_asset/www/" + mp3;
+
+        if(window.Media) {
+            if(dropsound) dropsound.stop();
+            dropsound = new Media(mp3, null, function(err) {
+                //alert(JSON.stringify(err)); 
+            });
+            dropsound.play();
+        }
+    }
+}
+    
 function SplashBeGone() {
     $('#splash').css('display', 'none');
     $('#loadingpage').css('display', 'block');
@@ -324,9 +344,11 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 
-                var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
-                myMedia.play();
-                myMedia.delay(3000).release();
+                playsound.play('media/waterdroplet.mp3');
+
+                //var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
+                //myMedia.play();
+                //myMedia.delay(3000).release();
 
                 //Put Sound Alright! or Oyeah!
                 //Next Level Activate Background Color Random Loop;
@@ -334,9 +356,12 @@ function jquerysnow() {
                 //String playerId = Games.Players.getCurrentPlayerId(getApiClient());
                 
             }else{
-               var myMedia = new Media("/android_asset/www/media/gameover.mp3");
-                myMedia.play();
-                myMedia.delay(3000).release();
+                //var myMedia = new Media("/android_asset/www/media/gameover.mp3");
+                //if(myMedia) media.stop();
+                //myMedia.play();
+                
+                playsound.play('media/gameover.mp3');
+
                 flag = true;
                 snowCount = 0;
                 score = 0;
