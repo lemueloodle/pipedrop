@@ -2,6 +2,10 @@ $(document).ready(function(){
 
     window.addEventListener('load', init);
     
+
+    dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
+    gameoversound = new Media("/android_asset/www/media/gameover.mp3");
+
     $(document).on('click', '#highestscore', function(){
         $('#highestscore-modal').modal('show');
 
@@ -512,6 +516,3 @@ function _callback( event ){
     alert('_callback message > '+event.message);
 }
 
-
-var dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
-var gameoversound = new Media("/android_asset/www/media/gameover.mp3");
