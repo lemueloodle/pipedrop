@@ -281,26 +281,50 @@ $(document).ready(function(){
         $(document).FaceGap(config);
     });
 
+    $(document).on("click", "#syncnow", function(){
+        
+        var tokenxxx = window.localStorage.getItem("fb_token");
+        var hscorex = window.localStorage.getItem("MyHighestDrop");
+        
+        var $btn = $(this);
+        $btn.button('loading');
+
+        $.ajax({
+        type: 'GET',
+        url: 'https://6geeks.xyz/app/dropsmybeat/getlogin.php',
+        crossDomain: true,
+        data: {
+            fb_token: tokenxxx,
+            account_hscore: hscorex
+        },
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(responseData, textStatus) {
+             $.each(responseData, function(key, val){
+                      initial.push(responseData[key]);
+                  });
+
+            $('#myranking').val(initial[0]);
+            $('#yourhdrop').html(initial[1]);
+
+            var rankingstorage = window.localStorage;
+            rankingstorage.setItem("MyRanking", initial[0]);
+            
+            var storage = window.localStorage;
+            storage.setItem("MyHighestDrop", initial[1]);
+            
+            $btn.button('reset');
+        },
+        error: function (responseData, textStatus,errorThrown) {
+             alert("AfterToken: Something is wrong with the server. Please contact the web team.");
+        }
+    });
+    });
     
     
 });
 
 var dropsound;
-var playsound = {
-
-    play: function(mp3) {
-
-        mp3 = "/android_asset/www/" + mp3;
-
-        
-            if(dropsound) dropsound.stop();
-            dropsound = new Media(mp3, null, function(err) {
-                //alert(JSON.stringify(err)); 
-            });
-            dropsound.play();
-       
-    }
-}
 
 function SplashBeGone() {
     $('#splash').css('display', 'none');
@@ -343,7 +367,14 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 
-                playsound.play('media/waterdroplet.mp3');
+                
+                if(dropsound) dropsound.stop();
+                dropsound = new Media("/android_asset/www/media/waterdroplet.mp3", null, function(err) {
+                    //alert(JSON.stringify(err)); 
+                });
+                dropsound.play();
+
+                //playsound.play('media/waterdroplet.mp3');
 
                 //var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
                 //myMedia.play();
@@ -359,7 +390,11 @@ function jquerysnow() {
                 //if(myMedia) media.stop();
                 //myMedia.play();
                 
-                playsound.play('media/gameover.mp3');
+                if(dropsound) dropsound.stop();
+                dropsound = new Media("/android_asset/www/media/gameover.mp3", null, function(err) {
+                    //alert(JSON.stringify(err)); 
+                });
+                dropsound.play();
 
                 flag = true;
                 snowCount = 0;
@@ -509,7 +544,9 @@ function aftertoken(account_idx, tokkkk, emailxx, namexx, hscorexx){
                 
                 var storage = window.localStorage;
                 storage.setItem("MyHighestDrop", initial[1]);
-           
+                
+                $('#loginnow').css('display', 'none');
+                $('#syncnow').css('display', 'block');
         },
         error: function (responseData, textStatus,errorThrown) {
              alert("AfterToken: Something is wrong with the server. Please contact the web team.");
