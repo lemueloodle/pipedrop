@@ -2,9 +2,6 @@ $(document).ready(function(){
 
     window.addEventListener('load', init);
     
-    var dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
-    var gameoversound = new Media("/android_asset/www/media/gameover.mp3");
-
     $(document).on('click', '#highestscore', function(){
         $('#highestscore-modal').modal('show');
 
@@ -176,8 +173,10 @@ $(document).ready(function(){
      });
     
     $(document).on('click', '#tryagain-game', function(){
+        
         dropletsound.release();
         gameoversound.release();
+
         flag = false;
         $('#gameover-modal').modal('hide');
         snowCount = 0;
@@ -225,7 +224,7 @@ $(document).ready(function(){
     $(document).on('click', '#goback-home', function(){
         dropletsound.release();
         gameoversound.release();
-        
+
         $('#gameover-modal').modal('hide');
         
         snowCount = 0;
@@ -514,3 +513,5 @@ function _callback( event ){
 }
 
 
+var dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
+var gameoversound = new Media("/android_asset/www/media/gameover.mp3");
