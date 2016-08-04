@@ -3,9 +3,9 @@ $(document).ready(function(){
     window.addEventListener('load', init);
     
     $(document).on('click', '#highestscore', function(){
-        $('#highestscore-modal').modal('show');
-
+        
         if(navigator.connection.type == Connection.NONE){
+            $('#highestscore-modal').modal('show');
             $('#hightable').html('Offline');
         }
         else{
