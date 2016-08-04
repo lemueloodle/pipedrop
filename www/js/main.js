@@ -289,16 +289,16 @@ var dropsound;
 var playsound = {
 
     play: function(mp3) {
-        
-        if(device.platform.toLowerCase() === "android") mp3 = "/android_asset/www/" + mp3;
 
-        if(window.Media) {
+        mp3 = "/android_asset/www/" + mp3;
+
+        
             if(dropsound) dropsound.stop();
             dropsound = new Media(mp3, null, function(err) {
                 //alert(JSON.stringify(err)); 
             });
             dropsound.play();
-        }
+       
     }
 }
 
