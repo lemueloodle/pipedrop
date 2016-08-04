@@ -342,8 +342,8 @@ function jquerysnow() {
                 score = 0;
                 clickcounter = 1;
                 
-
                 $('#scorer').html('');
+                
                 //Save Highest Score
                 var storage = window.localStorage;
                 var highestscore = storage.getItem("MyHighestDrop");
