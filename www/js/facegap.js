@@ -46,7 +46,7 @@
 			stored_accesstoken = window.localStorage.getItem('temp_fbaccesstokenyx');
 			if(stored_accesstoken==null || stored_accesstoken==0){
 				
-				var authorize_url=facebook_graph+"/oauth/authorize?type=user_agent&client_id="+config.app_id+"&redirect_uri=https://6geeks.xyz/app/dropsmybeat/redirect.php&display=touch&scope="+config.scope;
+				var authorize_url=facebook_graph+"/oauth/authorize?type=user_agent&client_id="+config.app_id+"&redirect_uri=https://6geeks.xyz/app/dropsmybeat/appdomain.php&display=touch&scope="+config.scope;
 				
 				//ref = window.open(authorize_url,"_blank","location=no,clearcache=yes");
 				
@@ -81,7 +81,7 @@
 		},
 		changeLogout:function(_url){
 			var return_url=_url;
-			if(return_url=="https://6geeks.xyz/app/dropsmybeat/redirect.php"){
+			if(return_url=="https://6geeks.xyz/app/dropsmybeat/appdomain.php"){
 				ref_logout.close();
 				if(methods._isFunction(config.onLogout)){
 					_result.status=1;
@@ -191,7 +191,7 @@
 		},
 		logout:function(){
 			if(facebook_token!=""){
-				var url_logout=facebook_graph+"/logout.php?access_token="+facebook_token+"&confirm=1&next=https://6geeks.xyz/app/dropsmybeat/redirect.php";
+				var url_logout=facebook_graph+"/logout.php?access_token="+facebook_token+"&confirm=1&next=https://6geeks.xyz/app/dropsmybeat/appdomain.php";
 				ref_logout=window.open(url_logout,"_blank","location=no");
 				ref_logout.addEventListener("loadstart",function(event){
 					methods.changeLogout(event.url)
