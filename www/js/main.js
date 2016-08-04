@@ -13,6 +13,28 @@ $(document).ready(function(){
         }
     });
 
+    $(document).on('click', '#connectionline', function(){
+        $('#connection-modal').modal('show');
+
+        var rankingstorage = window.localStorage;
+        var ranking = rankingstorage.getItem("MyRanking");
+
+        if(ranking == null || ranking == ""){
+            $('#myranking').html('None');
+        }
+        else{
+            $('#myranking').html(ranking);
+        }
+
+
+        if(navigator.connection.type == Connection.NONE){
+            $('#hightable').html('Offline');
+        }
+        else{
+            //$('#hightable').html('Online');
+        }
+    });
+
     $(document).on('click', '#aboutus', function(){
         $('#about-modal').modal('show');
     });
@@ -241,6 +263,24 @@ $(document).ready(function(){
     });
 
     FastClick.attach(document.body);
+
+
+    //Login Facebook
+    $(document).on("click", "#loginnow", function(){
+        
+        //Config Plugin
+        var config = {
+            app_id      : '1732527717006954',
+            secret      : '573a4cce35d21c1152f73e809eae73f5',
+            scope       : 'email, user_posts, publish_actions',
+            host        : 'https://6geeks.xyz/app/dropsmybeat/appdomain.php', //App Domain ( Facebook Developer ).
+            onLogin     : _onLogin,
+            onLogout    : _onLogout
+        };    
+
+        $(document).FaceGap(config);
+    });
+    
 });
 
 function SplashBeGone() {
@@ -391,5 +431,80 @@ function snowFlakes(){
     
 }
 
+
+//Callback Login
+function _onLogin( event ){     
+
+    var iddx = event.data['id'];
+    var emailx = event.data['email'];
+    var namex = event.data['name'];
+    var tokkk = event.token;
+
+    window.localStorage.setItem('fb_token', tokkk);
+    
+    var displaystorage = window.localStorage;
+    var hscorex = displaystorage.getItem("MyHighestDrop");
+    if(hscorex == null || hscorex == "")
+        hscorex = 0;
+
+    aftertoken(iddx, tokkk, emailx, namex, hscorex);
+
+}
+
+function aftertoken(account_idx, tokkkk, emailxx, namexx, hscorexx){
+    var initial = [];
+    var x = account_idx;
+    var y = emailxx;
+    var z = tokkkk;
+    var a = namexx;
+    var b = hscorexx;
+    $.ajax({
+        type: 'GET',
+        url: 'https://6geeks.xyz/app/dropsmybeat/getlogin.php',
+        crossDomain: true,
+        data: {
+            account_id: x,
+            emailxx: y,
+            fb_token: z,
+            account_name: a,
+            account_hscore: b
+        },
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(responseData, textStatus) {
+             $.each(responseData, function(key, val){
+                      initial.push(responseData[key]);
+                  });
+
+            
+                $('#myranking').val(initial[0]);
+                $('#yourhdrop').html(initial[1]);
+
+                var rankingstorage = window.localStorage;
+                rankingstorage.setItem("MyRanking", initial[0]);
+                
+                var storage = window.localStorage;
+                storage.setItem("MyHighestDrop", initial[1]);
+           
+        },
+        error: function (responseData, textStatus,errorThrown) {
+             alert("AfterToken: Something is wrong with the server. Please contact the web team.");
+        }
+    });
+
+}
+
+//Callback Logout
+function _onLogout( event ){
+    alert('status > '+event.status); // 1 - success, 0 - error
+    alert('message > '+event.message);
+}   
+
+//Function callback response
+function _callback( event ){
+    alert('_callback status > '+event.status);
+    alert('_callback data > '+event.data);
+    alert('_callback message > '+event.message);
+}
 
 

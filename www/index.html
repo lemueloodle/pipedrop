@@ -36,13 +36,22 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/main.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript" src="js/transition.js"></script>
+        <script type="text/javascript" src="js/facegap.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
         <title>Beat My Drops</title>
+
     </head>
     <body style="height: 100%; background-color: #000000;">
    
     <!-- Welcome Page -->
-   
-
     <div id="splash" style="min-height:100%; position:relative;">
         <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:#000000; color: #ffffff;">
             <div class="container-fluid">
@@ -61,7 +70,7 @@
             <div class="container-fluid">
             <div class="row-fluid">
                 <div class="navbar-fixed-top" style="padding: 10px;">
-                    <button id="connectonline" style="color: #1580db; background-color:transparent; border-color: #1580db;" class="round round-lg hollow pull-left"><i class="fa fa-bolt fa-1x"></i></button>
+                    <button id="connectionline" style="color: #1580db; background-color:transparent; border-color: #1580db;" class="round round-lg hollow pull-left"><i class="fa fa-bolt fa-1x"></i></button>
                     <button id="highestscore" style="color: #dbc111; background-color:transparent; border-color: #dbc111;" class="round round-lg hollow pull-right"><i class="fa fa-trophy fa-1x"></i></button>
                 </div>
                 <div class="navbar-fixed-bottom pull-left" style="padding: 10px;  font-size: 1.2em;">
@@ -137,17 +146,7 @@
 
  
 
-   
-
-        <script type="text/javascript" src="cordova.js"></script>
-
-        <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
-
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/fastclick.js"></script>
-        <script type="text/javascript" src="js/transition.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+ 
         
     </body>
     <div class="modal fade" id="gameover-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; ">
@@ -186,6 +185,29 @@ box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
         <i>*Hint: Listen to the drops nig**!</i>
         <hr>
         Brought to you by <a href="https://6geeks.xyz">6Geeks Studios</a>
+        <hr>
+        <button type="button" class="btn btn-warning pull-right" style="color: #000000; font-size: 1.5em;" data-dismiss="modal">Close</button>
+        <br><br>
+
+      </div>
+      <div class="modal-footer" style="display:none;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade abouting" id="connection-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow:initial; overflow-y: visible; text-align:center; ">
+  <div class="modal-dialog" style="display: inline-block; text-align: left; vertical-align: middle; word-wrap: break-word;">
+
+    <div class="modal-content" style="-webkit-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+-moz-box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;
+box-shadow: 0px 0px 110px 5px rgba(222,222,222,.7)!important;">
+      <div class="modal-body col-sm-12 text-center" style=" word-wrap: break-word;">
+        <p style="font-size: 2em; font-family: Chi-TownNF; animation: color 10s infinite; -webkit-animation: color 10s infinite">Beat My Drops</p>
+        <hr>
+        <h3 style="font-family: Chi-TownNF;">You're rank #</h3><h3><span id="myranking">&nbsp;</span></h3>
+        Connect your account online. Challenge your friends & beat 'em all!<br><br>
+        <button type="button" id="loginnow" class="btn btn-primary" style="background-color: #159bc6; color: #000000; font-size: 1.5em;">Connect</button>
         <hr>
         <button type="button" class="btn btn-warning pull-right" style="color: #000000; font-size: 1.5em;" data-dismiss="modal">Close</button>
         <br><br>
