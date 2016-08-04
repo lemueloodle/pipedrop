@@ -331,6 +331,7 @@ $(document).ready(function(){
 });
 
 var dropsound;
+var gameoversound;
 var backgroundsound;
 var loop = function (status) {
     if (status === Media.MEDIA_STOPPED) {
@@ -347,6 +348,9 @@ function init() {
     document.getElementById('splash').style.display = 'block';
     setTimeout(function(){
         
+        dropsound = new Media("/android_asset/www/media/waterdroplet.mp3", null, null, null);
+        gameoversound = new Media("/android_asset/www/media/gameover.mp3",null, null, null);
+
         backgroundsound = new Media("/android_asset/www/media/hiphop.mp3", null, null, loop);
         backgroundsound.play();
 
@@ -385,8 +389,8 @@ function jquerysnow() {
                 score = parseInt(score) + parseInt(1);
                 
                 
-                if(dropsound) dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/waterdroplet.mp3");
+                //if(dropsound) dropsound.stop();
+                //dropsound = new Media("/android_asset/www/media/waterdroplet.mp3");
                 dropsound.play();
 
                 //playsound.play('media/waterdroplet.mp3');
@@ -405,9 +409,8 @@ function jquerysnow() {
                 //if(myMedia) media.stop();
                 //myMedia.play();
                 
-                if(dropsound) dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/gameover.mp3");
-                dropsound.play();
+                //if(gameoversound) gameoversound.stop();
+                gameoversound.play();
 
                 flag = true;
                 snowCount = 0;
