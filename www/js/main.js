@@ -9,7 +9,7 @@ $(document).ready(function(){
             $('#hightable').html('Offline');
         }
         else{
-            //$('#hightable').html('Online');
+            var refx = cordova.InAppBrowser.open("https://6geeks.xyz/beatmydrops/rankings","_blank","location=no, clearcache=yes, hardwareback=no");
         }
     });
 
