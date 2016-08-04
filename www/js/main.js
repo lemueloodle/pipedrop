@@ -282,7 +282,7 @@ $(document).ready(function(){
     });
 
     $(document).on("click", "#syncnow", function(){
-        
+        var initial = [];
         var tokenxxx = window.localStorage.getItem("fb_token");
         var hscorex = window.localStorage.getItem("MyHighestDrop");
         
@@ -318,7 +318,7 @@ $(document).ready(function(){
         error: function (responseData, textStatus,errorThrown) {
              alert("AfterToken: Something is wrong with the server. Please contact the web team.");
         }
-    });
+        });
     });
     
     
