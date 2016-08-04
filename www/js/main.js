@@ -124,7 +124,6 @@ $(document).ready(function(){
     });
     $(document).on('touchstart', '#startplay', function() {
 
-        paused = 1;
         backgroundsound.pause();
 
         flag = false;
@@ -266,7 +265,6 @@ $(document).ready(function(){
         $('.pipe5').css('display','none');
         $('.top5').css('display','none');
 
-        soundpaused = 0;
         backgroundsound.play();
     });
 
@@ -333,14 +331,10 @@ $(document).ready(function(){
 });
 
 var dropsound;
-var soundpaused = 0;
 var backgroundsound;
 var loop = function (status) {
-    if (status === Media.MEDIA_STOPPED && soundpaused == 0) {
+    if (status === Media.MEDIA_STOPPED) {
         backgroundsound.play();
-    }
-    else{
-        backgroundsound.pause();
     }
 };
 
