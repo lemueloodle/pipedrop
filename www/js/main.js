@@ -123,6 +123,9 @@ $(document).ready(function(){
         }
     });
     $(document).on('touchstart', '#startplay', function() {
+
+        backgroundsound.stop();
+
         flag = false;
         snowFlakes();
          
@@ -218,7 +221,8 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '#goback-home', function(){
-       
+        
+
         $('#gameover-modal').modal('hide');
         
         snowCount = 0;
@@ -260,6 +264,8 @@ $(document).ready(function(){
         $('.top4').css('display','none');
         $('.pipe5').css('display','none');
         $('.top5').css('display','none');
+
+        backgroundsound.play();
     });
 
     FastClick.attach(document.body);
@@ -326,6 +332,13 @@ $(document).ready(function(){
 
 var dropsound;
 
+var backgroundsound;
+var loop = function (status) {
+    if (status === Media.MEDIA_STOPPED) {
+        backgroundsound.play();
+    }
+};
+
 function SplashBeGone() {
     $('#splash').css('display', 'none');
     $('#loadingpage').css('display', 'block');
@@ -335,8 +348,8 @@ function init() {
     document.getElementById('splash').style.display = 'block';
     setTimeout(function(){
         
-        dropsound = new Media("/android_asset/www/media/hiphop.mp3");
-        dropsound.play();
+        backgroundsound = new Media("/android_asset/www/media/hiphop.mp3", null, null, loop);
+        backgroundsound.play();
 
         SplashBeGone();
     }, 3000);
