@@ -562,7 +562,7 @@ function aftertoken(account_idx, tokkkk, emailxx, namexx, hscorexx){
                 storage.setItem("MyHighestDrop", initial[1]);
                 
                 $('#loginnow').css('display', 'none');
-                $('#syncnow').css('display', 'block');
+                $('#syncnow').css('display', 'inline-block');
         },
         error: function (responseData, textStatus,errorThrown) {
              alert("AfterToken: Something is wrong with the server. Please contact the web team.");
