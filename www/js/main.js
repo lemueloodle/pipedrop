@@ -2,10 +2,6 @@ $(document).ready(function(){
 
     window.addEventListener('load', init);
     
-
-    dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
-    gameoversound = new Media("/android_asset/www/media/gameover.mp3");
-
     $(document).on('click', '#highestscore', function(){
         $('#highestscore-modal').modal('show');
 
@@ -177,10 +173,6 @@ $(document).ready(function(){
      });
     
     $(document).on('click', '#tryagain-game', function(){
-        
-        dropletsound.release();
-        gameoversound.release();
-
         flag = false;
         $('#gameover-modal').modal('hide');
         snowCount = 0;
@@ -226,9 +218,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '#goback-home', function(){
-        dropletsound.release();
-        gameoversound.release();
-
+       
         $('#gameover-modal').modal('hide');
         
         snowCount = 0;
@@ -334,18 +324,19 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 
-                
-                dropletsound.play();
-               
+                var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
+                myMedia.play();
+                myMedia.delay(3000).release();
+
                 //Put Sound Alright! or Oyeah!
                 //Next Level Activate Background Color Random Loop;
                 //Player ID
                 //String playerId = Games.Players.getCurrentPlayerId(getApiClient());
                 
             }else{
-               
-                gameoversound.play();
-                
+               var myMedia = new Media("/android_asset/www/media/gameover.mp3");
+                myMedia.play();
+                myMedia.delay(3000).release();
                 flag = true;
                 snowCount = 0;
                 score = 0;
@@ -515,4 +506,5 @@ function _callback( event ){
     alert('_callback data > '+event.data);
     alert('_callback message > '+event.message);
 }
+
 
