@@ -331,8 +331,13 @@ function SplashBeGone() {
     $('#loadingpage').css('display', 'block');
 }
 function init() {
+    
     document.getElementById('splash').style.display = 'block';
     setTimeout(function(){
+        
+        dropsound = new Media("/android_asset/www/media/hiphop.mp3");
+        dropsound.play();
+
         SplashBeGone();
     }, 3000);
 }
@@ -369,9 +374,7 @@ function jquerysnow() {
                 
                 
                 if(dropsound) dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/waterdroplet.mp3", null, function(err) {
-                    //alert(JSON.stringify(err)); 
-                });
+                dropsound = new Media("/android_asset/www/media/waterdroplet.mp3");
                 dropsound.play();
 
                 //playsound.play('media/waterdroplet.mp3');
@@ -391,9 +394,7 @@ function jquerysnow() {
                 //myMedia.play();
                 
                 if(dropsound) dropsound.stop();
-                dropsound = new Media("/android_asset/www/media/gameover.mp3", null, function(err) {
-                    //alert(JSON.stringify(err)); 
-                });
+                dropsound = new Media("/android_asset/www/media/gameover.mp3");
                 dropsound.play();
 
                 flag = true;
