@@ -2,6 +2,9 @@ $(document).ready(function(){
 
     window.addEventListener('load', init);
     
+    var dropletsound = new Media("/android_asset/www/media/waterdroplet.mp3");
+    var gameoversound = new Media("/android_asset/www/media/gameover.mp3");
+
     $(document).on('click', '#highestscore', function(){
         $('#highestscore-modal').modal('show');
 
@@ -173,6 +176,8 @@ $(document).ready(function(){
      });
     
     $(document).on('click', '#tryagain-game', function(){
+        dropletsound.release();
+        gameoversound.release();
         flag = false;
         $('#gameover-modal').modal('hide');
         snowCount = 0;
@@ -218,7 +223,9 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '#goback-home', function(){
-       
+        dropletsound.release();
+        gameoversound.release();
+        
         $('#gameover-modal').modal('hide');
         
         snowCount = 0;
@@ -324,26 +331,25 @@ function jquerysnow() {
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
                 
-                var myMedia = new Media("/android_asset/www/media/waterdroplet.mp3");
-                myMedia.play();
-                myMedia.release();
-
+                
+                dropletsound.play();
+               
                 //Put Sound Alright! or Oyeah!
                 //Next Level Activate Background Color Random Loop;
                 //Player ID
                 //String playerId = Games.Players.getCurrentPlayerId(getApiClient());
                 
             }else{
-               var myMedia = new Media("/android_asset/www/media/gameover.mp3");
-                myMedia.play();
-                myMedia.release();
+               
+                gameoversound.play();
+                
                 flag = true;
                 snowCount = 0;
                 score = 0;
                 clickcounter = 1;
                 
                 $('#scorer').html('');
-                
+
                 //Save Highest Score
                 var storage = window.localStorage;
                 var highestscore = storage.getItem("MyHighestDrop");
