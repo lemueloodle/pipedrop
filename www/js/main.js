@@ -360,9 +360,9 @@ function init() {
 score = 0;
 snowCount = 0;
 fallingid = "";
+finalscore = 0;
 function jquerysnow() {
 
-        var finalscore = score;
         $('#scorer').html(finalscore);
         var snow = $('<div class="snow"></div>');
         var xmax = 5;
@@ -387,7 +387,7 @@ function jquerysnow() {
             
             if(xbar == xfall){
                 score = parseInt(score) + parseInt(1);
-                
+                finalscore = score;
                 
                 //if(dropsound) dropsound.stop();
                 //dropsound = new Media("/android_asset/www/media/waterdroplet.mp3");
