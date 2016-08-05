@@ -422,7 +422,7 @@ function jquerysnow() {
                 //Save Highest Score
                 var storage = window.localStorage;
                 var highestscore = storage.getItem("MyHighestDrop");
-                
+                var currenthscore = $('#yourhdrop').html();
                 if(highestscore == null || highestscore == ""){
                     storage.setItem("MyHighestDrop", finalscore);
                     $('#yourhdrop').html(finalscore);
@@ -431,7 +431,9 @@ function jquerysnow() {
                     storage.setItem("MyHighestDrop", finalscore);
                     $('#yourhdrop').html(finalscore);
                 }
-                else{
+                
+                if(currenthscore < finalscore){
+                    storage.setItem("MyHighestDrop", finalscore);
                     $('#yourhdrop').html(finalscore);
                 }
 
