@@ -33,6 +33,12 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        document.addEventListener('pause', function() {
+            backgroundsound.pause();
+        });
+        document.addEventListener('resume', function() {
+            backgroundsound.play();
+        });
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
