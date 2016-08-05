@@ -20,6 +20,8 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <icon src="icon.png" />
+    
+    <preference name="orientation" value="portrait" />
 
     <platform name="android">
          <allow-intent href="market:*" />
