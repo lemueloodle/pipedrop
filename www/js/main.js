@@ -440,6 +440,8 @@ function jquerysnow() {
                 $('#scoreboard').html(finalscore);
                 clearTimeout(fallingid);
 
+                finalscore = 0;
+                
                 $('#snowflakes').html('');
                
                 $('#gameover-modal').modal({ 

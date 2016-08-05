@@ -37,7 +37,9 @@ var app = {
             backgroundsound.pause();
         });
         document.addEventListener('resume', function() {
-            backgroundsound.play();
+            if(document.getElementById('loadingpage').style.display == "block" && document.getElementById('gamepage').style.display == "none"){
+                backgroundsound.play();
+            }
         });
         app.receivedEvent('deviceready');
     },
