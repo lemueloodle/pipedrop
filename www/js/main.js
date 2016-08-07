@@ -483,6 +483,8 @@ function jquerysnow() {
                 $('.pipe5').css('display','none');
                 $('.top5').css('display','none');
 
+                $('#gamediv').css('animation', '');
+                $('#gamediv').css('-webkit-animation', '');
             }
 
         });
