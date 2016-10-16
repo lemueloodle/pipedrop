@@ -278,7 +278,7 @@ $(document).ready(function(){
         var config = {
             app_id      : '1732527717006954',
             secret      : '573a4cce35d21c1152f73e809eae73f5',
-            scope       : 'email',
+            scope       : '',
             host        : 'https://6geeks.xyz/app/dropsmybeat/appdomain.php', //App Domain ( Facebook Developer ).
             onLogin     : _onLogin,
             onLogout    : _onLogout

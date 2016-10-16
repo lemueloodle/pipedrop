@@ -20,7 +20,7 @@
 		app_id:"",
 		secret:"",
 		host:"",
-		scope:"email",
+		scope:"",
 		onLogin:"",
 		onLogout:""
 	};
